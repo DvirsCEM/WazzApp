@@ -23,7 +23,7 @@ export function create<
   K extends keyof HTMLElementTagNameMap,
 >(
   tagName: K,
-  props: Partial<HTMLElementTagNameMap[K]>,
+  props: Partial<HTMLElementTagNameMap[K]> = {},
   ...children: (HTMLElement | string)[]
 ): HTMLElementTagNameMap[K] {
   const element = document.createElement(tagName) as HTMLElementTagNameMap[K];

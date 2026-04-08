@@ -11,10 +11,10 @@ var logOutButton = get("button", "logOutButton");
 
 var messagesCount = 0;
 
-var userId = localStorage.getItem("userId");
-var user = await send<User | null>("getUser", userId);
+var userToken = localStorage.getItem("userToken");
+var user = await send<User | null>("getUser", userToken);
 if (user == null) {
-  localStorage.removeItem("userId");
+  localStorage.removeItem("userToken");
   location.href = "index.html";
 }
 
@@ -61,12 +61,12 @@ async function loadMessages() {
 }
 
 logOutButton.onclick = function () {
-  localStorage.removeItem("userId");
+  localStorage.removeItem("userToken");
   location.href = "index.html";
 };
 
 sendButton.onclick = async function () {
-  await send<boolean | null>("addMessage", userId, messageInput.value);
+  await send<boolean | null>("addMessage", userToken, messageInput.value);
   messageInput.value = "";
   await loadMessages();
 };

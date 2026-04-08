@@ -26,13 +26,13 @@ submitButton.onclick = async function () {
     return;
   }
 
-  var userId = await send<string | null>("signUp", usernameInput.value, passwordInput.value, profileImageSrc);
+  var userToken = await send<string | null>("signUp", usernameInput.value, passwordInput.value, profileImageSrc);
 
-  if (userId == null) {
+  if (userToken == null) {
     errorDiv.innerText = "A user with that username already exists.";
     return;
   }
 
-  localStorage.setItem("userId", userId);
+  localStorage.setItem("userToken", userToken);
   location.href = "chat.html";
 };

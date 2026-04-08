@@ -29,8 +29,8 @@ class Program
       {
         if (request.Name == "getUser")
         {
-          var userId = request.GetParams<string?>();
-          var user = database.Users.Find(userId);
+          var token = request.GetParams<string?>();
+          var user = token == null ? null : database.Users.FirstOrDefault(u => u.Token == token);
           request.Respond(user);
         }
         else if (request.Name == "signUp")
@@ -42,12 +42,12 @@ class Program
             continue;
           }
 
-          var userId = Guid.NewGuid().ToString();
-          var user = new User(userId, username, password, imgUrl);
+          var token = Guid.NewGuid().ToString();
+          var user = new User(token, username, password, imgUrl);
           database.Users.Add(user);
           database.SaveChanges();
 
-          request.Respond(userId);
+          request.Respond(token);
         }
         else if (request.Name == "logIn")
         {
@@ -55,13 +55,14 @@ class Program
 
           var user = database.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
 
-          request.Respond(user?.Id);
+          request.Respond(user?.Token);
         }
         else if (request.Name == "addMessage")
         {
-          var (userId, text) = request.GetParams<(string, string)>();
+          var (token, text) = request.GetParams<(string, string)>();
+          var user = database.Users.FirstOrDefault(u => u.Token == token)!;
 
-          var message = new Message(text, userId);
+          var message = new Message(text, user.Id);
           database.Messages.Add(message);
           database.SaveChanges();
         }
@@ -89,18 +90,19 @@ class Database() : DatabaseCore("database")
   public DbSet<Message> Messages { get; set; } = default!;
 }
 
-class User(string id, string name, string password, string imgUrl)
+class User(string token, string name, string password, string imgUrl)
 {
-  [JsonIgnore] public string Id { get; set; } = id;
+  public int Id { get; set; } = default!;
+  [JsonIgnore] public string Token { get; set; } = token;
   public string Name { get; set; } = name;
   [JsonIgnore] public string Password { get; set; } = password;
   public string ImgUrl { get; set; } = imgUrl;
 }
 
-class Message(string text, string userId)
+class Message(string text, int userId)
 {
-  public int Id { get; set; } = default;
+  public int Id { get; set; } = default!;
   public string Text { get; set; } = text;
-  public string UserId { get; set; } = userId;
+  public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }

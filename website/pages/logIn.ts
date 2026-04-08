@@ -6,13 +6,13 @@ var submitButton = document.querySelector<HTMLButtonElement>("#submitButton")!;
 var errorDiv = document.querySelector<HTMLDivElement>("#errorDiv")!;
 
 submitButton.onclick = async function () {
-  var userId = await send<string | null>("logIn", usernameInput.value, passwordInput.value);
+  var userToken = await send<string | null>("logIn", usernameInput.value, passwordInput.value);
 
-  if (userId == null) {
+  if (userToken == null) {
     errorDiv.innerText = "Wrong username or password.";
     return;
   }
 
-  localStorage.setItem("userId", userId);
+  localStorage.setItem("userToken", userToken);
   location.href = "chat.html";
 };
