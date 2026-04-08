@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: url("../fonts/HelveticaNeueBold.otf");
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  background-image: radial-gradient(
+    circle at center,
+    #1f6b73 0%,
+    #0f4f57 45%,
+    #08363c 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Helvetica Neue Bold";
+}
+
+#iconImg {
+  margin-top: 100px;
+  height: 120px;
+}
+
+h1 {
+  color: white;
+  font-size: 50px;
+}
+
+#anchorsDiv {
+  display: flex;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 100px;
+  background: white;
+  color: darkslategray;
+  text-decoration: none;
+}
+
+a:hover {
+  transform: translateY(-1px);
+}
+
+a:active {
+  transform: translateY(1px) scale(0.98);
+}
