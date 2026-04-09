@@ -38,3 +38,23 @@ h2 {
   margin-top: 0px;
 }
 
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 100px;
+  background: white;
+  color: darkslategray;
+  text-decoration: none;
+}
+
+a:hover {
+  transform: translateY(-1px);
+}
+
+a:active {
+  transform: translateY(1px) scale(0.98);
+}
