@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: url("../fonts/HelveticaNeueBold.otf");
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  background-image: radial-gradient(
+    circle at center,
+    #1f6b73 0%,
+    #0f4f57 45%,
+    #08363c 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Helvetica Neue Bold";
+  color: white;
+}
+
 #containerDiv {
   display: flex;
   flex-direction: column;
