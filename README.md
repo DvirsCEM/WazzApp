@@ -1,4 +1,6 @@
-## תנאים מוקדמים
+שינוי לדוגמה
+
+##תנאים מוקדמים
 - התקינו את [Git](https://git-scm.com/downloads/win)
 - התקינו את [NET Framework.](https://dotnet.microsoft.com/en-us/download)
 - התקינו את [VS Code](https://code.visualstudio.com/download)
