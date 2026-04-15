@@ -1,5 +1,3 @@
-שינוי לדוגמה
-
 ##תנאים מוקדמים
 - התקינו את [Git](https://git-scm.com/downloads/win)
 - התקינו את [NET Framework.](https://dotnet.microsoft.com/en-us/download)
